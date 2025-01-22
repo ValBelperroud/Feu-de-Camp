@@ -1,0 +1,74 @@
+---
+layout: base.njk
+title: "Agenda - Projet Feu de Camp"
+description: "Viens à des rencontres, de l'entraide entre artistes et créatif·ves engagé·es"
+---
+
+<main>
+  <section class="min-h-min flex flex-col gap-8 pt-32 md:pt-52 pb-16 px-4">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+      <div class="flex justify-between items-start mb-12 md:mb-24">
+        <h1 class="text-3xl md:text-6xl md:w-[58%] leading-tight">Viens à des rencontres, de l'entraide entre artistes et créatif·ves engagé·es</h1>
+      </div>
+
+      {% set allTags = [] %}
+      {% for event in collections.evenements %}
+        {% for tag in event.data.tags %}
+          {% if tag !== "evenement" and tag !== "evenements" %}
+            {% if tag not in allTags %}
+              {% set allTags = (allTags.push(tag), allTags) %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <div class="mb-12">
+        <h2 class="text-base md:text-lg mb-4">Filtrer par tag :</h2>
+        <div class="flex flex-wrap gap-2">
+          <button 
+            class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors filter-tag bg-red text-black"
+            data-tag="all">
+            Tous
+          </button>
+          {% for tag in allTags %}
+            <button 
+              class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors filter-tag"
+              data-tag="{{ tag }}">
+              {{ tag }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="flex flex-col gap-8" id="events-container">
+        {% include "components/event_list.njk" %}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterTags = document.querySelectorAll('.filter-tag');
+  const eventsContainer = document.getElementById('events-container');
+  const events = eventsContainer.querySelectorAll('.event-item');
+
+  filterTags.forEach(button => {
+    button.addEventListener('click', function() {
+      const selectedTag = this.dataset.tag;
+      
+      filterTags.forEach(btn => btn.classList.remove('bg-red', 'text-black'));
+      this.classList.add('bg-red', 'text-black');
+
+      events.forEach(event => {
+        if (selectedTag === 'all') {
+          event.style.display = 'flex';
+        } else {
+          const eventTags = event.dataset.tags.split(',');
+          event.style.display = eventTags.includes(selectedTag) ? 'flex' : 'none';
+        }
+      });
+    });
+  });
+});
+</script>

@@ -1,0 +1,107 @@
+---
+layout: base.njk
+---
+
+<main class="py-32 md:pt-52">
+  <article class="w-[87.5vw] max-w-[1680px] mx-auto px-4">
+    {# En-tête de l'événement #}
+    <header class="mb-8 md:mb-24 max-w-3xl mx-auto">
+      {# Tags #}
+      <div class="flex flex-wrap gap-2 md:gap-4 mb-6">
+        {% for tag in tags %}
+          {% if tag !== "evenements" %}
+            <a href="/tags/{{ tag | slug }}/" class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {# Titre et description #}
+      <h1 class="text-2xl md:text-4xl lg:text-6xl mb-6 md:mb-8 font-serif">{{ title }}</h1>
+      
+      {% if description_courte %}
+        <p class="text-base md:text-lg lg:text-xl text-gray-300 mb-6 font-serif">{{ description_courte }}</p>
+      {% endif %}
+
+      {# Informations pratiques #}
+      <div class="flex flex-col gap-3 md:gap-4 text-sm md:text-base border-t border-b border-red py-4 my-6 md:my-8">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <time datetime="{{ date }}">{{ date | postDate }}</time>
+        </div>
+
+        {% if lieu %}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <a href="{{ lieu_lien }}" target="_blank" class="hover:text-white transition-colors">{{ lieu }}</a>
+          </div>
+        {% endif %}
+
+        {% if organisateur %}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <a href="/organisateurs/{{ organisateur | slug }}/" class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors">{{ organisateur }}</a>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Image principale #}
+      {% if image_principale %}
+        <figure class="my-8 md:my-12 -mx-4 md:mx-0">
+          <img src="{{ image_principale }}" alt="{{ title }}" class="w-full h-[40vh] md:h-[60vh] object-cover">
+          {% if image_legende %}
+            <figcaption class="text-xs md:text-sm text-gray-400 mt-2 italic px-4 md:px-0">{{ image_legende }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    </header>
+
+    {# Contenu principal et sidebar #}
+    <div class="flex flex-col lg:flex-row justify-center gap-8 lg:gap-16">
+      {# Contenu principal #}
+      <div class="w-full lg:max-w-2xl">
+        {# Bouton d'inscription mobile #}
+        {% if inscription_lien %}
+          <div class="mb-8 lg:hidden">
+            <a href="{{ inscription_lien }}" target="_blank" class="block w-full text-center bg-red text-black py-4 hover:opacity-90 transition-opacity">S'inscrire</a>
+          </div>
+        {% endif %}
+
+        <div class="prose prose-invert prose-lg">
+          {{ content | safe }}
+        </div>
+      </div>
+
+      {# Sidebar #}
+      <aside class="w-full lg:w-64 lg:relative order-first lg:order-last">
+        <div class="lg:sticky lg:top-32">
+          {# Bouton d'inscription desktop #}
+          {% if inscription_lien %}
+            <div class="hidden lg:block">
+              <a href="{{ inscription_lien }}" target="_blank" class="block w-full text-center bg-red text-black py-4 mb-8 hover:opacity-90 transition-opacity">S'inscrire</a>
+            </div>
+          {% endif %}
+
+          {% if tags.length > 0 %}
+            <div class="border-l border-red pl-6 md:pl-8">
+              <h4 class="text-sm font-bold mb-4 text-gray-400 uppercase">Tags</h4>
+              <div class="flex flex-wrap gap-2">
+                {% for tag in tags %}
+                  {% if tag !== "evenements" %}
+                    <a href="/tags/{{ tag | slug }}/" class="text-sm border border-red px-2 py-1 hover:bg-red hover:text-black transition-colors">{{ tag }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </aside>
+    </div>
+  </article>
+</main> 

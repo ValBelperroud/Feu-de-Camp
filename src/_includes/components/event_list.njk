@@ -1,0 +1,37 @@
+<!-- Load Luxon script in the head of your HTML document -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js" integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% for event in collections.evenements | reverse %}
+  <div class="event-item bg-black border-red border w-full relative flex flex-col md:flex-row justify-between p-6 md:p-8 mb-8 items-start md:items-center gap-6 md:gap-16 hover:bg-red transition-all text-white hover:text-black group"
+       data-tags="{{ event.data.tags | join(',') }}">
+    <div class="flex justify-center flex-col w-full md:w-auto">
+      <div class="text-xl md:text-2xl lg:text-3xl font-serif-semi-b">
+        {{ event.data.date | postDate }}
+      </div>
+      {% if event.data.lieu %}
+        <div class="text-sm md:text-base mt-1 md:mt-2">
+          <span>à </span>
+          <a href="{{ event.data.lieu_lien }}" target="_blank" class="underline group-hover:text-black">
+            {{ event.data.lieu }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if event.data.image_principale %}
+      <div class="w-full md:w-80 h-48 md:h-52 overflow-hidden">
+        <img src="{{ event.data.image_principale }}" alt="{{ event.data.title }}" class="w-full h-full object-cover">
+      </div>
+    {% endif %}
+
+    <div class="text-xl md:text-2xl lg:text-[28px] font-serif-semi-b flex-grow">
+      {{ event.data.title }}
+    </div>
+
+    <div class="w-full md:w-auto md:absolute md:bottom-8 md:right-8">
+      <a href="{{ event.url }}" class="bouton secondary arrow-right w-full md:w-auto text-center block">
+        Voir l'événement
+      </a>
+    </div>
+  </div>
+{% endfor %}

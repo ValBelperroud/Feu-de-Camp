@@ -1,0 +1,13 @@
+version: '3'
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:1.21
+    container_name: forgejo
+    environment:
+      - FORGEJO_APP_INI=/data/gitea/conf/app.ini
+    volumes:
+      - ./forgejo-data:/data
+      - ./app.ini:/data/gitea/conf/app.ini
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

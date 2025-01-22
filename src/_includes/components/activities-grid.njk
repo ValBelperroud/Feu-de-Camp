@@ -1,0 +1,66 @@
+<section div="actions" class="min-h-min flex flex-col gap-8 pt-32 md:pt-52 pb-0 px-4">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <h2 class="text-3xl md:text-6xl md:w-[58%] leading-tight">Quatre actions concrètes pour une <span class="text-red font-serif-italic">mission ardente</span></h2> 
+    <div class="relative">
+      <div class="flex flex-wrap gap-4 mt-8 md:mt-12">
+      {% for activite in collections.activities %}
+  <!-- Wrap the entire card in an <a> tag for the permalink -->
+  <a href="{{ activite.url }}" class="block w-full cursor-pointer">
+    <div class="flex w-full flex-col md:flex-row flex-shrink-0 p-0 bg-red bg-blend-normal mb-8 md:mb-12 items-stretch max-h-full md:max-h-[480px] overflow-hidden">
+    
+      {% if loop.index is odd %}
+        <!-- Odd iteration: Image on the right -->
+        <div class="w-full md:w-1/2 p-4 md:p-8 flex justify-between flex-col h-full order-2 md:order-1">
+          <div class="actions-description">
+            <div class="border-b border-black max-w-fit mb-4">
+              <p class="font-serif-italic text-base md:text-[20px] text-black pb-4 lg:text-2xl">{{ activite.data.seo.description }}</p>
+            </div>
+          </div>
+          <div class="font-serif-b max-w-[94%] flex flex-col flex-grow">
+            <h4 class="text-3xl md:text-5xl font-serif-semi-b text-black py-4 mb-4 leading-tight">{{ activite.data.seo.titre }}</h4>
+            <div class="flex flex-wrap gap-2 md:mb-0 mb-4">
+      {% set tags = activite.data.seo.tags | replace('[', '') | replace(']', '') %}
+{% set tagsArray = tags.split(' ') %}
+{% for tag in tagsArray %}
+  <span class="bg-red text-black text-sm border-black border font-sans me-2 px-2.5 py-0.5">{{ tag }}</span>
+{% endfor %}
+</div>
+          </div>
+          <button href="{{ activite.url }}" class="bg-red text-black border-b border-black hover:border-blue w-full md:max-w-96 py-2 text-base mt-0 md:mt-4 text-left">En apprendre plus sur {{ activite.data.seo.description }}</button>
+        </div>
+        <div class="w-full md:w-1/2 h-64 md:h-auto bg-cover bg-center order-1 md:order-2" style="background-image: url('{{ activite.data.header.image.lien }}')"></div>
+
+      {% else %}
+        <!-- Even iteration: Image on the left -->
+        <div class="w-full md:w-1/2 h-64 md:h-auto bg-cover bg-center" style="background-image: url('{{ activite.data.header.image.lien }}')"></div>
+        <div class="w-full md:w-1/2 p-4 md:p-8 flex justify-between flex-col h-full">
+          <div class="actions-description">
+            <div class="border-b border-black max-w-fit mb-6">
+              <p class="font-serif-italic text-base md:text-[20px] text-black pb-4 lg:text-2xl">{{ activite.data.seo.description }}</p>
+            </div>
+          </div>
+          <div class="font-serif-b max-w-[94%] flex flex-col flex-grow">
+            <h4 class="text-3xl md:text-5xl font-serif-semi-b text-black py-4 mb-4 leading-tight">{{ activite.data.seo.titre }}</h4>
+            <div class="flex flex-wrap gap-2 md:mb-0 mb-4">
+      {% set tags = activite.data.seo.tags | replace('[', '') | replace(']', '') %}
+{% set tagsArray = tags.split(' ') %}
+{% for tag in tagsArray %}
+  <span class="bg-red text-black text-sm border-black border font-medium font-sans me-2 px-2.5 py-0.5">{{ tag }}</span>
+{% endfor %}
+</div>
+          </div>
+           <button href="#" class="bg-red text-black border-b border-black hover:border-blue max-w-96 py-2 text-base mt-4 text-left">En apprendre plus sur {{ activite.data.seo.description }}</button>
+        </div>
+      {% endif %}
+
+    </div>
+  </a>
+{% endfor %}
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>

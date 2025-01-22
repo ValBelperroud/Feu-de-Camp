@@ -1,0 +1,11 @@
+{% if nav.announcements.enabled and nav.announcements.type == "menuitem" %}
+  <div class="hidden lg:block">
+    <a href="{{ nav.announcements.link }}" 
+       x-data="{ stopPulse: false }"
+       @mouseover="stopPulse = true"
+       class="text-small font-sans p-2 inline-block relative border-red border {{ nav.announcements.backgroundColor }} {{ nav.announcements.textColor }}"
+       :class="{ 'animate-pulse': !stopPulse }">
+      {{ nav.announcements.text }}
+    </a>
+  </div>
+{% endif %} 

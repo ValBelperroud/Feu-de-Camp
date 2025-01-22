@@ -1,0 +1,49 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - tagList
+    - blog
+permalink: /tags/{{ tag | slug }}/
+layout: base.njk
+eleventyComputed:
+  title: "Articles tagués '{{ tag }}'"
+---
+
+<main class="py-32 md:pt-52">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto px-4">
+    <h1 class="text-3xl md:text-6xl mb-12 font-serif">Articles tagués "{{ tag }}"</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {%- for post in collections[tag] -%}
+        <div class="border border-red">
+          <div class="flex justify-between items-start">
+            <div class="flex flex-wrap gap-2 p-4">
+              {% for postTag in post.data.tags %}
+                {% if postTag !== "blog" and postTag !== "posts" %}
+                  <a href="/tags/{{ postTag | slug }}/" class="text-sm border border-red px-2 py-1 hover:bg-red hover:text-black transition-colors">{{ postTag }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% if post.data.temps %}
+              <div class="text-[14px] p-4 text-right">Temps de lecture: {{ post.data.temps }}</div>
+            {% endif %}
+          </div>
+          <div class="p-8">
+            <h2 class="text-2xl font-serif mb-4">{{ post.data.title }}</h2>
+            {% if post.data.resume_en_deux_lignes %}
+              <p class="text-base mb-8">{{ post.data.resume_en_deux_lignes }}</p>
+            {% endif %}
+            <a href="{{ post.url }}" class="bouton secondary arrow-right">Lire l'article</a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</main> 

@@ -1,0 +1,37 @@
+
+<section class="min-h-min flex flex-col">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+      <div class="flex justify-between mb-12"> 
+         <h2 class="text-6xl md:w-[58%]">{{blog.titre}}</h2>
+        <a href="#" class="bouton secondary arrow-right hidden-mobile border-white border h-fit px-6 py-4 hover:bg-red hover:text-black transition-all hover:border-red">{{blog.bouton}}</a>
+        </div>
+    <div class="flex flex-wrap gap-8 mt-12">
+      {%- for article in collections.casestudy -%}
+       {%- if loop.index <= 3 -%}
+          <div class="w-96 border bg-black transition-all border-red hover:bg-red hover:text-black hover:border-black">        
+            <div class="w-full flex justify-between">
+              <div class="title-container">
+                <div class="border-b border-r border-red p-4">{{ article.data.tags }}</div>
+              </div>
+              <div class="duration-container w-full">
+                <div class="text-[14px] p-4 w-full text-right">Temps de lecture: {{ article.data.temps }}</div> 
+              </div>
+            </div> 
+            <div class="p-8">
+              <div>
+                <img src="/assets/images/val2.png" alt="img_featured" class="w-full max-h-48 object-cover mb-8" >
+                <div class="text-2xl font-sans-b">{{ article.data.title }}</div>
+                <div class="text-base">{{ article.data.resume_en_deux_lignes }}</div>
+              </div>
+              <div class="mt-12">
+                <a href="/fr/tags/{{ article.data.tags[0].name }}/articles/{{ article.data.slug }}/" class="bouton secondary arrow-right">Lire l’article</a>
+              </div> 
+            </div>        
+          </div>
+       {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+           </div>
+</section>
+

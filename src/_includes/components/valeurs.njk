@@ -1,0 +1,18 @@
+ <section id="actions" class="w-[87.5vw] max-w-[1680px] mx-auto pt-32">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <h2 class="text-6xl md:w-[68%]">{{ valeurs.titre }}</h2>
+    </div>
+  {% for valeur in valeurs.valeurs %}
+    <div class="flex flex-row justify-between mt-20 mb-4">
+        <div class="w-1/4">
+            <h3 class="text-4xl text-red font-serif-semi-b ">{{ valeur.titre-gauche }}</h3>
+        </div>
+        <div class="w-2/4 ml-4 text-base">
+           <p>{{ valeur.titre-droite }}</p>
+        </div>
+    </div>
+    <hr>
+      {% endfor %}
+   
+          
+</section>

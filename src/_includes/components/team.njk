@@ -1,0 +1,34 @@
+<section class="min-h-min flex flex-col gap-8 pt-20 pb-16 px-4 mt-32 flex-wrap">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto flex flex-wrap">
+         <h2 class="text-lg font-sans antialiased md:w-[30%]">{{ users.titre }}</h2>
+
+            
+            {% for person in users.inside %}
+            <div class="pr-4 py-8 px-8 flex justify-between h-full bg-red max-w-[26rem] mr-16">
+                <div class="flex gap-4 ml-0 flex-col">
+                <img src="{{ person.image.lien }}" alt="{{ person.image.description }}" class="max-w-40 bg-cover">
+                <div class="actions-description">
+                    <div class="border-b border-black max-w-fit">
+                        <p class="font-serif-italic text-[20px] text-black py-4 text-2xl">{{ person.sur-titre }}</p>
+                    </div>
+                </div>
+                <div class="font-serif-b max-w-[94%]">
+                    <h4 class="text-3xl font-serif-semi-b text-black mb-4 leading-tight">{{ person.titre }}</h4>
+                    <p class="text-black text-base font-sans mb-2">{{ person.paragraphe }}</p>
+                    <a href="{{ person.button1.lien }}" class="bouton secondary arrow-right is-dark max-w-fit text-base">{{ person.button1.text }}</a>
+                <a href="{{ person.button2.lien }}" class="bouton secondary arrow-right is-dark max-w-fit text-base">{{ person.button2.text }}</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+         <!-- We're Hiring Section -->
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto p-24 border border-white">
+        <h2 class="text-3xl">{{ users.we_re_hiring.titre }}</h2>
+        <p class="text-xl mt-4">{{ users.we_re_hiring.paragraphe }}</p>
+        <a href="{{ users.we_re_hiring.button.lien }}" class="border-white text-wihte is-dark max-w-fit text-base mt-12">{{ users.we_re_hiring.button.text }}</a>
+    </div>
+    </div>
+
+   
+</section>

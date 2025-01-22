@@ -1,0 +1,40 @@
+{% set currentUrl = page.url %}
+{% set alternateUrls = {} %}
+{% set hasAlternateVersion = false %}
+
+{# Vérifier si la page existe dans l'autre langue #}
+{% if currentUrl.startsWith('/en/') %}
+  {% set frenchUrl = currentUrl | replace('/en/', '/') %}
+  {% for page in collections.all %}
+    {% if page.url == frenchUrl %}
+      {% set hasAlternateVersion = true %}
+      {% set alternateUrls = {
+        'fr': frenchUrl,
+        'en': currentUrl
+      } %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% set englishUrl = '/en' + currentUrl %}
+  {% for page in collections.all %}
+    {% if page.url == englishUrl %}
+      {% set hasAlternateVersion = true %}
+      {% set alternateUrls = {
+        'fr': currentUrl,
+        'en': englishUrl
+      } %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if hasAlternateVersion %}
+<div class="language-switcher flex gap-2 items-center border border-black p-2">
+  {% for lang in site.languages.available %}
+    <a href="{{ alternateUrls[lang] }}" 
+       class="{% if page.url.startsWith('/' + lang + '/') or (lang == 'fr' and not page.url.startsWith('/en/')) %}text-black font-sans-b {% else %}text-black hover:text-black{% endif %} transition-colors">
+      {{ lang | upper }}
+    </a>
+    {% if not loop.last %}<span class="text-black">|</span>{% endif %}
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,37 @@
+---
+layout: base.njk
+title: Menu
+description: "Attiser les liens entre celleux qui portent le changement et celleux qui le racontent"
+locale: fr-BE
+---
+{# Bouton retour #}
+  <a href="javascript:history.back()" class="flex gap-4 p-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+  </a>
+<div class="w-[87.5vw] max-w-[1680px] mx-auto pb-12 pt-4">
+    <h1 class="text-base font-sans mb-12">Menu</h1>
+    <div class="space-y-12">
+        {% for item in nav.navigation %}
+            <div class="border-t border-white pt-8">
+                {% if item.dropdown %}
+                    <h2 class="font-sans text-2xl mb-6">{{ item.title }}</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        {% for subitem in item.dropdown %}
+                            <a href="{{ subitem.url }}" class="flex items-center space-x-4 p-4 border border-white hover:bg-white hover:text-black transition-all">
+                                <img class="w-8 h-8" src="/assets/images/{{ subitem.icon }}" alt="{{ subitem.title }} icon">
+                                <div>
+                                    <div class="font-bold">{{ subitem.title }}</div>
+                                    <div class="text-sm opacity-75">{{ subitem.description }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <a href="{{ item.url }}" class="block text-2xl hover:text-red transition-colors">{{ item.title }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div> 

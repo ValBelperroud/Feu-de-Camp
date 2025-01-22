@@ -1,0 +1,68 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script>document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    var tooltips = document.querySelectorAll(".tooltip");
+
+    tooltips.forEach(function (tooltip) {
+      var tooltipText = tooltip.querySelector(".tooltiptext");
+
+      // tooltip bounding and calculations
+      function adjustTooltipPosition() {
+        var rect = tooltip.getBoundingClientRect();
+        var tooltipWidth = tooltipText.offsetWidth;
+
+        var spaceLeft = rect.left;
+        var spaceRight = window.innerWidth - rect.right;
+
+        tooltipText.style.left = "50%";
+        tooltipText.style.right = "auto";
+        tooltipText.style.transform = "translateX(-50%)";
+
+        if (spaceRight < tooltipWidth / 2) {
+          tooltipText.style.left = "auto";
+          tooltipText.style.right = "0";
+          tooltipText.style.transform = "translateX(0)";
+        }
+
+        if (spaceLeft < tooltipWidth / 2) {
+          tooltipText.style.left = "0";
+          tooltipText.style.transform = "translateX(0)";
+        }
+
+        if (rect.top < tooltipText.offsetHeight) {
+          tooltipText.style.top = "100%";
+          tooltipText.style.bottom = "auto";
+        } else {
+          tooltipText.style.bottom = "100%";
+          tooltipText.style.top = "auto";
+        }
+      }
+
+      // call adjustTooltipPosition initially
+      adjustTooltipPosition();
+
+      // call adjustTooltipPosition on window resize
+      window.addEventListener("resize", adjustTooltipPosition);
+    });
+  }, 100); // delay on bounding in ms
+});
+</script>
+<header class="text-black px-8 xl:px-0 h-full flex justify-center items-start flex-col bg-main-header-mobile sm:bg-main-header bg-red">
+  <div class="md:-mt-42 md:w-[87.5vw] md:max-w-[1680px] mx-auto w-full pb-20 pt-12 md:pt-72 md:pb-44">
+    <!-- <p class="subtitle is-dark" style="margin-bottom: 20px;border:1px solid black;display:inline-block;padding:10px;">Notre mission</p> -->
+      <h1 class="md:max-w-[78%] w-full text-5xl md:text-8xl leading-tight hidden md:block">Attiser les liens entre celleux qui portent <span class="tooltip">le changement<span class="tooltiptext bg-red border-black p-4 border text-xl"><strong>Celleux qui portent le changement?</strong> Pour nous c'est les ASBL et tout projet qui lutte contre toutes opression d'un groupe d'individu sur un autre. Découvre notre charte pour en apprendre plus</span></span> et celleux qui <span class="tooltip">le racontent<span class="tooltiptext notransform bg-red border-black p-4 bg-red border-black p-4 border text-xl">Celleux qui le <em>racontent</em></em>? Pour nous c'est le créatfi..ve et artistes militant..e qui veulent mettre leur art pour une cause qui leur parle</span></span></h1>
+      <div class="md:hidden w-full border-b-2 border-black pb-4 mb-12">
+      <img src="/assets/images/logo.svg" alt="logo Projet Feu de Camp" class="w-2/3 md:hidden">
+    </div>
+      <h1 class="md:max-w-[78%] w-full text-5xl md:text-8xl leading-tight md:hidden">Attiser les liens entre celleux qui portent le changemen et celleux qui le racontent</h1>
+    <div data-scroll class="mt-12 flex flex-wrap gap-8">
+      <a class="border-black border hover:bg-black hover:text-white transition-all p-4" href="#actions">Nos actions</a>
+      <a class="border-black border-b  transition-all px-4 py-2" href="/a-propos">Apprends-en plus sur le projet</a>
+    </div>
+    <div class="fleche is-down mt-12">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78" fill="none">
+        <path d="M38.1378 67.4394L15.7313 45.033C15.5028 44.8044 15.3744 44.4944 15.3744 44.1712C15.3744 43.848 15.5028 43.538 15.7313 43.3094C15.9599 43.0809 16.2699 42.9524 16.5931 42.9524C16.9164 42.9524 17.2263 43.0809 17.4549 43.3094L37.7801 63.6346L37.7801 11.4233C37.7801 11.0999 37.9086 10.7897 38.1373 10.561C38.366 10.3324 38.6762 10.2039 38.9996 10.2039C39.323 10.2039 39.6331 10.3324 39.8618 10.561C40.0905 10.7897 40.219 11.0999 40.219 11.4233L40.219 63.6346L60.5442 43.3094C60.7728 43.0809 61.0828 42.9524 61.406 42.9524C61.7292 42.9524 62.0392 43.0809 62.2678 43.3094C62.4964 43.538 62.6248 43.848 62.6248 44.1712C62.6248 44.4944 62.4964 44.8044 62.2678 45.033L39.8614 67.4394C39.6328 67.668 39.3228 67.7964 38.9996 67.7964C38.6763 67.7964 38.3663 67.668 38.1378 67.4394Z" fill="#1C1C1C"/>
+      </svg>
+    </div>
+  </div>
+</header>

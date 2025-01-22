@@ -1,0 +1,162 @@
+---
+layout: base.njk
+---
+
+<main class="py-32 md:pt-52">
+  <article class="w-[87.5vw] max-w-[1680px] mx-auto px-4">
+    {# En-tête de l'article #}
+    <header class="mb-8 md:mb-24 max-w-3xl mx-auto">
+      {# Tags #}
+      <div class="flex flex-wrap gap-2 md:gap-4 mb-6">
+        {% for tag in tags %}
+          {% if tag !== "blog" %}
+            <a href="/tags/{{ tag | slug }}/" class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {# Titre et description #}
+      <h1 class="text-2xl md:text-4xl lg:text-6xl mb-6 md:mb-8 font-serif">{{ title }}</h1>
+      
+      {% if description_courte %}
+        <p class="text-base md:text-lg lg:text-xl text-gray-300 mb-6 font-serif">{{ description_courte }}</p>
+      {% endif %}
+
+      {# Métadonnées de l'article #}
+      <div class="flex flex-col md:flex-row gap-3 md:gap-8 text-sm md:text-base text-gray-400 border-t border-b border-red py-4 my-6 md:my-8">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <time datetime="{{ date }}">{{ date | postDate }}</time>
+        </div>
+
+        {% if auteur %}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <a href="/auteurs/{{ auteur | slug }}/" class="hover:text-white transition-colors">{{ auteur }}</a>
+          </div>
+        {% endif %}
+
+        {% if temps %}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ temps }} de lecture</span>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Image principale #}
+      {% if image_principale %}
+        <figure class="my-8 md:my-12 -mx-4 md:mx-0">
+          <img src="{{ image_principale }}" alt="{{ title }}" class="w-full h-[40vh] md:h-[60vh] object-cover">
+          {% if image_legende %}
+            <figcaption class="text-xs md:text-sm text-gray-400 mt-2 italic px-4 md:px-0">{{ image_legende }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    </header>
+
+    {# Contenu principal et sidebar #}
+    <div class="flex flex-col lg:flex-row justify-center gap-8 lg:gap-16">
+      {# Contenu principal #}
+      <div class="w-full lg:max-w-2xl">
+        {# Table des matières mobile #}
+        <div class="prose prose-invert prose-lg mb-8 lg:hidden">
+          <h3 class="text-xl mb-4">Table des matières</h3>
+          <nav class="table-of-contents">
+            {# Généré par JavaScript #}
+          </nav>
+        </div>
+
+        {# Contenu de l'article #}
+        <div class="prose prose-invert prose-lg">
+          {{ content | safe }}
+        </div>
+
+        {# Navigation entre articles #}
+        {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+        {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+
+        <nav class="mt-16 pt-8 border-t border-red">
+          <div class="flex flex-col md:flex-row justify-between gap-8">
+            {% if previousPost %}
+              <a href="{{ previousPost.url }}" class="group flex-1">
+                <span class="block text-sm mb-2 text-gray-400 group-hover:text-red">Article précédent</span>
+                <span class="block text-base md:text-lg font-serif group-hover:text-white transition-colors">{{ previousPost.data.title }}</span>
+              </a>
+            {% endif %}
+
+            {% if nextPost %}
+              <a href="{{ nextPost.url }}" class="group flex-1 text-right">
+                <span class="block text-sm mb-2 text-gray-400 group-hover:text-red">Article suivant</span>
+                <span class="block text-base md:text-lg font-serif group-hover:text-white transition-colors">{{ nextPost.data.title }}</span>
+              </a>
+            {% endif %}
+          </div>
+        </nav>
+      </div>
+
+      {# Sidebar #}
+      <aside class="w-full lg:w-64 lg:relative">
+        <div class="lg:sticky lg:top-32">
+          {# Table des matières desktop #}
+          <div class="hidden lg:block mb-12">
+            <h3 class="text-xl mb-4">Table des matières</h3>
+            <nav class="table-of-contents">
+              {# Généré par JavaScript #}
+            </nav>
+          </div>
+
+          {% if tags.length > 0 %}
+            <div class="border-l border-red pl-6 md:pl-8">
+              <h4 class="text-sm font-bold mb-4 text-gray-400 uppercase">Tags</h4>
+              <div class="flex flex-wrap gap-2">
+                {% for tag in tags %}
+                  {% if tag !== "blog" %}
+                    <a href="/tags/{{ tag | slug }}/" class="text-sm border border-red px-2 py-1 hover:bg-red hover:text-black transition-colors">{{ tag }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </aside>
+    </div>
+  </article>
+</main>
+
+<script>
+// Génération de la table des matières
+document.addEventListener('DOMContentLoaded', function() {
+  const headings = document.querySelectorAll('.prose h2, .prose h3');
+  const tocElements = document.querySelectorAll('.table-of-contents');
+  
+  if (tocElements.length > 0 && headings.length > 0) {
+    tocElements.forEach(toc => {
+      const ul = document.createElement('ul');
+      ul.className = 'space-y-2 text-sm';
+      
+      headings.forEach(heading => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        const level = heading.tagName === 'H2' ? '' : 'ml-4 ';
+        
+        const headingId = heading.id;
+        a.href = `#${headingId}`;
+        a.textContent = heading.textContent;
+        a.className = `${level}block text-gray-400 hover:text-white transition-colors`;
+        
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      
+      toc.appendChild(ul);
+    });
+  }
+});
+</script>

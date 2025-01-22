@@ -1,0 +1,4 @@
+{
+    "permalink": "/{{ page.fileSlug }}/{% if pagination %}{{ pagination.pageNumber }}/{% endif %}",
+    "layout": "base.njk"
+} 

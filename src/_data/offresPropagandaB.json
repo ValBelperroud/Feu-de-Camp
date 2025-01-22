@@ -1,0 +1,109 @@
+[
+  {
+    "sur-titre": "Offre C - LANCEMENT DE PROJET",
+    "titre": "On lance votre nouveau projet avec vous",
+    "description": "Contexte : Cette offre est pour vous si vous avez un projet génial qui arrive, mais vous avez besoin d'un coup de main pour créer des bases solides et bien démarrer ! On propose, en quelques jours seulement, de mettre au clair vos idées et rendre le tout clair et inspirant pour votre public. Une fois fait, on vous créera un guide de communication et une direction graphique qui vous correspond. Ainsi, vous pourrez communiquer sur votre projet de façon inspirante avec des bases en béton.",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose:",
+        "liste": [
+          "2 jours de Workshop de stratégie de communication et storytelling avec vous",
+          "Guide de communication (Inspirations, ton de communication, exemples,etc)",
+          "Direction graphique clair sous forme de moodboard détaillé"
+        ]
+      },
+      "prix": {
+        "titre": "Temps et prix :",
+        "details": "5500 € HTVA",
+        "note": "10 jours de travail habituellement réalisé en 1 mois calendrier"
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": []
+      }
+    }
+  },
+  {
+    "sur-titre": "Offre D - SITE WEB ET OUTILS DIGITAUX",
+    "titre": "Du digital low-tech ? C'est beau et ça marche !",
+    "description": "Si vous avez déjà une identité et une communication claires et précises pour le site, nous nous occupons de la conception et développement du site internent low-tech basé sur un CMS personnalisé et soutenable (pas WordPress).",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose :",
+        "liste": [
+          "(2 jours de Workshop de stratégie de communication et storytelling avec vous)",
+          "(3 options de moodboards)",
+          "(1 moodboard final qui définit le style du site)",
+          "1 atelier pour définir les objectifs et l'organisation du site",
+          "Une maquette du site",
+          "Un développement Low tech",
+          "Un CMS (comme WordPress mais low tech, simple et efficace.)"
+        ]
+      },
+      "prix": {
+        "titre": "Options de prix :",
+        "details": [
+          "'On a déjà tout, il nous faut que le site' - 6750 € HTVA",
+          "'Il nous faut un site, son style et sa communication' - 9500 € HTVA (+ 2750 € pour stratégie + moodboard)"
+        ],
+        "note": "Fait en 2 à 3 mois calendrier. Note: Le prix peut varier en fonction de la complexité du site et des outils supplémentaires demandés."
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": []
+      }
+    }
+  },
+  {
+    "sur-titre": "Offre E - IDENTITÉ VISUELLE",
+    "titre": "Une identité visuelle qui vous ressemble",
+    "description": "Vous souhaitez créer ou rafraîchir votre identité visuelle ? Nous vous accompagnons dans la création d'une identité forte et cohérente qui reflète vos valeurs et votre personnalité.",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose :",
+        "liste": [
+          "1 atelier de découverte et d'analyse de vos besoins",
+          "3 propositions de directions créatives",
+          "Développement complet de l'identité choisie",
+          "Guide d'utilisation de votre identité visuelle",
+          "Package de fichiers sources et formats adaptés"
+        ]
+      },
+      "prix": {
+        "titre": "Prix :",
+        "details": "4500 € HTVA",
+        "note": "Réalisation en 6 à 8 semaines. Le prix peut varier selon la complexité du projet et les supports demandés."
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": []
+      }
+    }
+  },
+  {
+    "sur-titre": "Offre F - FORMATION ET ATELIERS",
+    "titre": "Devenez autonome dans votre communication",
+    "description": "Vous souhaitez monter en compétence et devenir plus autonome dans votre communication ? Nous proposons des formations sur mesure pour vous et votre équipe.",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose :",
+        "liste": [
+          "Analyse de vos besoins en formation",
+          "Programme personnalisé selon vos objectifs",
+          "Sessions de formation pratiques et interactives",
+          "Support de formation détaillé",
+          "Suivi post-formation pendant 1 mois"
+        ]
+      },
+      "prix": {
+        "titre": "Options de prix :",
+        "details": "750 € HTVA par journée de formation",
+        "note": "Minimum 2 jours recommandés. Groupes de 3 à 8 personnes maximum pour une meilleure efficacité."
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": []
+      }
+    }
+  }
+]

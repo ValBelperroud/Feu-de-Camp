@@ -1,0 +1,64 @@
+<section class="bg-red pt-16 md:pt-24 pb-16 md:pb-24 text-black px-4">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <div class="section-infolettre">
+      <h2 class="text-black text-3xl md:text-5xl">Une infolettre max.<br> 1 fois par mois ! </h2>
+      <div class="cta-links-container pb-8">
+        <div>
+          <p class="mt-4 md:mt-6 mb-4 md:mb-6">Envie d'être tenu..e au courant des grands tournants du projet? <br class="hidden md:block">Loins des GAFAM – infolettre autogéré avec Infomaniak</p>    
+        </div>  
+      </div>
+      
+      <form method="post" action="https://newsletter.infomaniak.com/v3/api/1/newsletters/webforms/19673/submit" class="w-full">
+        <input type="hidden" name="webform_id" value="19673">
+        <input type="email" name="email" class="hidden">
+        <input type="hidden" name="key" value="eyJpdiI6Iis3Nmhwd2FKRW5pT2I3MTU1R0tZUUpuOWpsdnI3NDgyOVVqSDZSdGdXTTg9IiwibWFjIjoiNDNjZGVkODhhMGZlZGVlZjZmNTgyNWRmMGYwOWExZTU3ZGYwYzVjMDkzMmU4NDAwNGIyMjMwNjc4MDIyNWIxMiIsInZhbHVlIjoieXIxaE5VT1JXMDdFVU5WbUtyS2VGdUwrcDZncHp4VFd6aE10RUNsR2k3MD0ifQ==">
+
+        <div class="bg-white p-8 rounded-lg shadow-sm">
+          <h4 class="text-xl font-serif mb-4 text-black">Inscription à notre Newsletter</h4>
+          
+          <div class="space-y-6">
+            <div class="flex flex-col space-y-2">
+              <label class="font-sans text-black">Pronom</label>
+              <input type="text" name="inf[67599]" class="w-full h-12 px-4 border border-black/20 rounded focus:outline-none focus:border-black">
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label class="font-sans text-black">Prénom</label>
+              <input type="text" name="inf[2]" class="w-full h-12 px-4 border border-black/20 rounded focus:outline-none focus:border-black">
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label class="font-sans text-black">Nom</label>
+              <input type="text" name="inf[3]" class="w-full h-12 px-4 border border-black/20 rounded focus:outline-none focus:border-black">
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label class="font-sans text-black">Email <span class="text-red">*</span></label>
+              <input type="email" name="inf[1]" required class="w-full h-12 px-4 border border-black/20 rounded focus:outline-none focus:border-black">
+            </div>
+
+            <p class="text-sm text-black/70">
+              Tes données ne sont pas partagées et reste hors GAFAM. Ton adresse mail est uniquement utilisée pour t'envoyer nos lettres d'informations ainsi que des informations concernant nos actions. Tu peux à tout moment utiliser le lien de désabonnement intégré dans chacun de nos mails.
+            </p>
+
+            <div>
+              <label data-mcaptcha_url="https://captcha.infomaniak.com/widget/?sitekey=wKJaAigS1e48fWgqtjvg5w7rKA6QIwmy" for="mcaptcha__token" id="mcaptcha__token-label">
+                <input type="text" name="mcaptcha__token" id="mcaptcha__token" class="hidden">
+              </label>
+              <div id="mcaptcha__widget-container"></div>
+            </div>
+
+            <div class="text-right">
+              <button type="submit" class="bg-black text-white px-8 py-3 rounded hover:bg-black/90 transition-colors font-sans">
+                Valider
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>

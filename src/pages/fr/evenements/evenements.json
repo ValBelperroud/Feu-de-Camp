@@ -1,0 +1,5 @@
+{
+    "layout": "base.njk",
+    "tags": "evenement",
+    "locale": "fr-be"
+}

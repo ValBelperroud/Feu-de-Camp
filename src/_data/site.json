@@ -1,0 +1,105 @@
+{
+  "site": {
+    "name": "Projet Feu de Camp",
+    "description": "Attiser les liens entre celleux qui portent le changement et celleux qui le racontent",
+    "url": "https://projetfeudecamp.be",
+    "locale": "be-fr",
+    "email": "bxl@projetfeudecamp.be",
+    "phone": "+32 491 14 00 86",
+    "address": "Rue Americain 11B, 1060 Saint-Gilles, Bruxelles"
+  },
+
+  "languages": {
+    "default": "fr",
+    "available": ["fr", "en"]
+  },
+
+  "branding": {
+    "logo": {
+      "src": "/assets/images/logo.svg",
+      "alt": "Logo Projet Feu de Camp",
+      "height": "55",
+      "width": "238"
+    },
+    "colors": {
+      "red": "#EB3726",      
+      "black": "#1A1A1A",    
+      "white": "#FFFFFF"    
+    },
+    "typography": {
+      "fonts": {
+        "serif": {
+          "family": "Adelphe",
+          "weights": {
+            "regular": 400,
+            "semi-bold": 600
+          }
+        },
+        "serif-italic": {
+          "family": "Adelphe-italic"
+        },
+        "sans": {
+          "family": "Amiamie",
+          "weights": {
+            "regular": 400
+          }
+        }
+      },
+      "sizes": {
+        "h1": {
+          "mobile": "text-4xl",
+          "desktop": "text-7xl"
+        },
+        "h2": {
+          "mobile": "text-3xl",
+          "desktop": "text-6xl"
+        },
+        "h3": {
+          "mobile": "text-2xl",
+          "desktop": "text-5xl"
+        },
+        "h4": {
+          "mobile": "text-xl",
+          "desktop": "text-3xl"
+        },
+        "body": {
+          "mobile": "text-base",
+          "desktop": "text-lg"
+        }
+      }
+    }
+  },
+
+  "social": {
+    "instagram": "https://instagram.com/projetfeudecamp",
+    "facebook": "https://facebook.com/projetfeudecamp",
+    "linkedin": "https://linkedin.com/company/projetfeudecamp"
+  },
+
+  "navigation": {
+    "main": [
+      {
+        "label": "Accueil",
+        "url": "/"
+      },
+      {
+        "label": "À propos",
+        "url": "/a-propos"
+      },
+      {
+        "label": "Actions",
+        "url": "/actions"
+      },
+      {
+        "label": "Contact",
+        "url": "/contact"
+      }
+    ]
+  },
+
+  "features": {
+    "enableBlog": true,
+    "enableNewsletter": true,
+    "enableMultiLanguage": true
+  }
+} 

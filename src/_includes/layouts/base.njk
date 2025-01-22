@@ -1,0 +1,159 @@
+{% set lang = site.languages.default %}
+{% if '/en/' in page.url %}
+  {% set lang = 'en' %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}" x-data>
+<head>
+ {% include "basehead.njk" %}
+</head>
+<body x-data="{ open: false, isModalOpen: false }" x-on:keydown.escape="isModalOpen=false" class="bg-black text-white">
+    {% include "components/announcement-topbar.njk" %}
+    <!-- Menu Mobile (barre de navigation fixe en bas) -->
+<!-- Mobile Tab Bar -->
+<div class="border-t-2 border-red rounded-t-3xl fixed bottom-0 left-0 right-0 bg-black p-4 lg:hidden z-50">
+    <div class="flex self-start items-baseline justify-between w-[87.5vw] max-w-[1680px] mx-auto">
+      {% for item in nav.navigationMobile %}
+        <a href="{{ item.url }}" class="text-center w-1/3 flex flex-col items-center group transition-all duration-300">
+          <img src="/assets/images/{{ item.icon }}.svg" alt="{{ item.title }}" class="w-6 h-6 mb-1 transition-all duration-300 group-hover:[filter:invert(67%)_sepia(72%)_saturate(380%)_hue-rotate(165deg)_brightness(87%)_contrast(88%)] {% if page.url == item.url %}[filter:invert(67%)_sepia(72%)_saturate(380%)_hue-rotate(165deg)_brightness(87%)_contrast(88%)]{% endif %}">
+          <span class="text-sm text-white transition-all duration-300 group-hover:text-red {% if page.url == item.url %}text-[#45B1E4]{% endif %}">{{ item.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div> 
+   <div class="bg-red lg:flex hidden max-w-full border-b border-black borderColor fixed min-w-full ms:bg-transparent show justify-around z-50 lg:px-4">
+    <nav class="w-[87.5vw] max-w-[1680px] mx-auto flex">
+    <div id="logo-container" class="lg:flex hidden h-20 py-2.5 max-w-fit flex items-center">
+        <a href="/index.html" aria-label="Revenir à la page d'accueil">
+            <img 
+                src="{{ site.branding.logo.src }}"
+                alt="{{ site.branding.logo.alt }}"
+                width="{{ site.branding.logo.width }}"
+                height="{{ site.branding.logo.height }}"
+            >
+        </a>
+    </div>
+  
+    <!-- Navigation dekstop -->
+    <div class="relative w-full flex items-center justify-between space-x-4">
+        <!-- Menu Principal (affiché sur grand écran) -->
+        <div class="relative w-full flex items-center justify-end space-x-4 lg:flex hidden">
+            {% include "components/announcement-menuitem.njk" %}
+            {% if nav.navigation %}
+                <ul class="flex gap-8">
+                    {% for item in nav.navigation %}
+                        {% if item.dropdown %}
+                            <li class="group relative text-base font-sans p-3 inline-block transition-all duration-200 ease-in-out text-black hover:border-black hover:borde border border-red">
+                                <a href="{{ item.url }}" class="text-base font-sans text-black">{{ item.title }}</a>
+                                <div class="absolute left-0 bg-red border p-4 border-black mt-2 shadow-sm w-80 z-10 opacity-0 group-hover:opacity-100 group-hover:block hidden">
+                                    <ul class="space-y-2">
+                                        {% for subitem in item.dropdown %}
+                                            <li>
+                                                <a href="{{ subitem.url }}" class="p-4 flex items-center space-x-2 border-red border transition-all hover:border-black hover:border">
+                                                    <img class="w-6 h-6" src="/assets/images/{{ subitem.icon }}" alt="{{ subitem.title }} icon" />
+                                                    <div>
+                                                        <div class="font-semibold text-black">{{ subitem.title }}</div>
+                                                        <div class="text-sm text-black">{{ subitem.description }}</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ item.url }}" class="text-base font-sans p-3 inline-block relative hover:border-black hover:borde transition-all duration-200 ease-in-out text-black border-red border">{{ item.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% include "components/language-switcher.njk" %}
+        </div>
+    </div>
+</nav>
+
+</div>
+<main>
+  {{ content | safe }}
+</main>
+<footer class="bg-red text-black pt-32">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+        <!-- Newsletter Section -->
+        <div class="mb-24">
+            <h3 class="text-3xl font-serif-semi-b mb-4">Infolettre</h3>
+            <p class="text-lg max-w-2xl">Suis l'aventure avec notre Infolettre – un à deux mail(s) par mois pour être tenu..e au courrant..e du Projet, d'événement à venir, articles...</p>
+        </div>
+        
+        <!-- Main Footer Links -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-12 pb-16 border-b border-black">
+            <!-- Logo Column -->
+            <div class="col-span-1">
+                <img 
+                    src="{{ site.branding.logo.src }}" 
+                    alt="{{ site.branding.logo.alt }}"
+                    class="h-14"
+                >
+            </div>
+            
+            <!-- Links Columns -->
+            <div class="space-y-4">
+                <h4 class="text-lg font-sans mb-6">Introduction</h4>
+                <div class="flex flex-col space-y-3">
+                    <a href="/index.html" class="hover:text-white transition-colors">Page d'accueil</a>
+                    <a href="/agenda" class="hover:text-white transition-colors">Agenda</a>
+                    <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+                    <a href="/contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+             </div>
+             
+             <div class="space-y-4">
+                 <h4 class="text-lg font-sans mb-6">Le Projet</h4>
+                 <div class="flex flex-col space-y-3">
+                     <a href="/a-propos#vision" class="hover:text-white transition-colors">Vision</a>
+                     <a href="/a-propos#mission" class="hover:text-white transition-colors">Mission</a>
+                     <a href="/a-propos#valeurs" class="hover:text-white transition-colors">Valeurs</a>
+                     <a href="/a-propos#collectif" class="hover:text-white transition-colors">Le collectif</a>
+                 </div>
+             </div>
+             
+             <div class="space-y-4">
+                 <h4 class="text-lg font-sans mb-6">Les Actions</h4>
+                 <div class="flex flex-col space-y-3">
+                     <a href="/actions/propaganda/" class="hover:text-white transition-colors">Propaganda</a>
+                     <a href="/actions/la-collective/" class="hover:text-white transition-colors">La Collective</a>
+                     <a href="/actions/flameches/" class="hover:text-white transition-colors">Flamèches</a>
+                     <a href="/actions/etincelles/" class="hover:text-white transition-colors">Etincelles</a>
+                 </div>
+             </div>
+             
+             <div class="space-y-4">
+                 <h4 class="text-lg font-sans mb-6">Information légales et contacts</h4>
+                 <div class="flex flex-col space-y-3">
+                     <a href="#" class="hover:text-white transition-colors">Projet Feu de Camp – 1002.519.249</a>
+                     <a href="#" class="hover:text-white transition-colors">bxl@projetfeudecamp.be</a>
+                     <a href="#" class="hover:text-white transition-colors">+ 32 491 14 00 86‬</a>
+                     <a href="#" class="hover:text-white transition-colors">Rue Américaine 11, 1160 Saint-Gilles</a>
+                 </div>
+             </div>
+         </div>
+         
+         <!-- Copyright Section -->
+         <div class="py-8 flex flex-col md:flex-row justify-between items-start md:items-center">
+             <div class="text-sm opacity-75">
+                 <p>©2024 Projet Feu de Camp. Aucuns droits réservés, que de l'entraide.</p>
+                 <p class="mt-2">Adresse légale: Rue des Echevins 59/1, 1050 Ixelles</p>
+             </div>
+             <div class="flex gap-6 mt-4 md:mt-0">
+                 <a href="#" class="text-sm hover:text-white transition-colors">Politique de vie privée</a>
+                 <a href="#" class="text-sm hover:text-white transition-colors">Conditions d'utilisations</a>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+
+</body>
+</html>

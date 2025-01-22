@@ -1,0 +1,31 @@
+<article class="card-article">
+  <header class="card-header">
+    <div class="tags">
+      {% for tag in article.data.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <div class="reading-time">
+      <span>Temps de lecture: {{ article.data.temps }}</span>
+    </div>
+  </header>
+  
+  <div class="card-content">
+    {% if article.data.image %}
+      <img 
+        src="{{ article.data.image }}" 
+        alt="{{ article.data.imageAlt or article.data.title }}"
+        loading="lazy"
+        width="400"
+        height="300"
+      >
+    {% endif %}
+    
+    <h2>{{ article.data.title }}</h2>
+    <p>{{ article.data.resume_en_deux_lignes }}</p>
+    
+    <a href="{{ article.url }}" class="button" aria-label="Lire l'article : {{ article.data.title }}">
+      Lire l'article
+    </a>
+  </div>
+</article>

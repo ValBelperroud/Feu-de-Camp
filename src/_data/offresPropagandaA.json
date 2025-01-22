@@ -1,0 +1,58 @@
+[
+  {
+    "sur-titre": "Offre A - CONSEIL",
+    "titre": "Conseiller, débloquer et raviver",
+    "description": "Contexte : Si vous voulez améliorer votre communication faite en interne, on est là quand vous en avez besoin pour conseiller avec un oeil extérieur et donner des pistes de solutions. Parfois, il suffit de quelques conseils et de petits outils pour simplifier et amplifier votre communication.",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose :",
+        "liste": [
+          "Deux ateliers de trois heures avec votre équipe pour faire l'état des lieux et vous former à certains outils de communication qui vous correspondent. (seulement la première fois)",
+          "Des outils de communication à se réapproprier",
+          "Des retours et des conseils sur votre communication et projets tout au long de l'année",
+          "Des sessions de réflexions en équipe si besoin"
+        ]
+      },
+      "prix": {
+        "titre": "Temps et prix :",
+        "details": "Pack de 20h de conseil par an → à 1800 €/an (ou 150 €/mois) HTVA",
+        "note": "Pour démarrer, nous suggérons de commencer avec 3 à 6 heures pour un atelier de formation/réflexion avec votre équipe. Et ensuite, utilisez les heures restantes comme bon vous semble. Mais tout reste flexible"
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": [
+          "La communication reste secondaire dans vos priorités. Vous avez l'impression que vous pourriez faire mieux, mais vous ne savez pas par où commencer.",
+          "Certaines façons de communiquer ne fonctionnent plus ou pas du tout. Qu'est-ce que je fais de travers ?"
+        ]
+      }
+    }
+  },
+  {
+    "sur-titre": "Offre B - RENFORT",
+    "titre": "On devient un membre de votre équipe",
+    "description": "Contexte : Le but est de venir vous aider à renforcer ou recréer votre stratégie communication et ensuite être là pour vous épauler dans sa réalisation quand vous en avez besoin.",
+    "popup": {
+      "concretement": {
+        "titre": "Concrètement, ce qu'on propose :",
+        "liste": [
+          "Un atelier de 2 jours avec votre équipe pour revoir votre stratégie de communication avec vous",
+          "Un guide de communication pour vous permettre de communiquer efficacement sans nous.",
+          "10 jours de mains d'œuvre à utiliser quand bon vous semble pendant l'année (3 jours sont soustraits la première année pour l'atelier de lancement et le guide)",
+          "Graphisme, Web, Vidéo, Écriture, conseil et atelier de réflexion d'équipe."
+        ]
+      },
+      "prix": {
+        "titre": "5500€ HTVA pour 10 jours/an",
+        "details": "550€/jour - 2 jours d'atelier - 1 jour de création de guide - 7 jours de main d'oeuvre",
+        "note": ""
+      },
+      "exemples": {
+        "titre": "Exemples :",
+        "liste": [
+          "Votre communication aurait besoin d'être remise en question et quelques moyens de communication aurait besoin d'être revus"
+        ]
+      }
+    }
+  }
+]
+  

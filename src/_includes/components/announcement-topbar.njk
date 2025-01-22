@@ -1,0 +1,9 @@
+{% if nav.announcements.enabled and nav.announcements.type == "topbar" %}
+  <div class="{{ nav.announcements.backgroundColor }} {{ nav.announcements.textColor }} py-2">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto text-center">
+      <a href="{{ nav.announcements.link }}" class="hover:underline">
+        {{ nav.announcements.text }}
+      </a>
+    </div>
+  </div>
+{% endif %} 

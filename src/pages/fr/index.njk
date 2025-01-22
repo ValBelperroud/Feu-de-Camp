@@ -1,0 +1,28 @@
+---
+layout: base.njk
+permalink: /
+title: "Accueil - Projet Feu de Camp"
+description: "Attiser les liens entre celleux qui portent le changement et celleux qui le racontent"
+locale: fr-BE
+blog:
+  titre: "L'actu, des trouvailles et des récits brulants"
+  bouton: "Découvre tous les articles"
+---
+<main>
+  {% include "components/header.njk" %}
+<div id="actions">
+  {% include "components/activities-grid.njk" %}
+</div>
+
+  {% include "components/nous-sommes-fdc.njk" %}
+
+  {% include "components/tu-veux-en-discuter-2.njk" %}
+
+
+  {% include "components/prochains-evenements.njk" %}
+
+
+  {% include "components/newsletter.njk" %}
+
+  {% include "components/articles-section.njk" %}
+</main>

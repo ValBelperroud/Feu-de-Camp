@@ -1,0 +1,91 @@
+{
+    "announcements": {
+      "enabled": true,
+      "type": "topbar",
+      "text": "Bar créatif & Atelier stickers militants – 28 janviers!",
+      "link": "/evenements/15-mars",
+      "backgroundColor": "bg-black",
+      "textColor": "text-white"
+    },
+    "navigation": [
+      {
+          "title": "Accueil",
+          "url": "/index",
+          "icon": "home"
+        },
+        {
+        "title": "Actions",
+        "url": "/actions/",
+        "icon": "action",
+        "dropdown": [
+          {
+            "title": "Propaganda",
+            "url": "/actions/propaganda/",
+            "description": "Communication pour ASBL",
+            "icon": "propaganda.svg"
+          },
+          {
+            "title": "La Collective",
+            "url": "/actions/la-collective/",
+            "description": "Créatif..ve militant à Bruxelles",
+            "icon": "collectifeu.svg"
+          },
+          {
+            "title": "Flamèches",
+            "url": "/actions/flameches/",
+            "description": "Formations et ateliers",
+            "icon": "flammeche.svg"
+          },
+          {
+            "title": "Etincelles",
+            "url": "/actions/etincelles/",
+            "description": "Ressources et outils",
+            "icon": "etincelle.svg"
+          }
+        ]
+      },
+      {
+        "title": "À propos",
+        "url": "/a-propos/",
+        "icon": "info"
+      },
+      {
+        "title": "Agenda",
+        "url": "/agenda/",
+        "icon": "calendar"
+      },
+      {
+        "title": "Blog",
+        "url": "/blog/",
+        "icon": "blog"
+      },
+      {
+        "title": "Contact",
+        "url": "/contact/",
+        "icon": "envelope"
+      }
+    ],
+    "navigationMobile": [
+      {
+        "title": "Actions",
+        "url": "/index#actions",
+        "icon": "actions"
+      },
+      {
+        "title": "À propos",
+        "url": "/a-propos/",
+        "icon": "favicon-w"
+      },
+      {
+        "title": "Agenda",
+        "url": "/agenda/",
+        "icon": "agenda"
+      },
+      {
+        "title": "Menu",
+        "url": "/sitemap/",
+        "icon": "menu"
+      }
+    ]
+  }
+  

@@ -1,0 +1,97 @@
+<!-- <section class="min-h-min flex pt-32 md:pt-52 pb-32 md:pb-52 flex-col gap-8 px-4">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <div class="flex flex-wrap gap-4 md:gap-8">
+      {% include "components/articles-trois-col.njk" %}
+    </div>
+  </div>
+</section>  -->
+
+<section class="min-h-min flex flex-col gap-8 pt-32 md:pt-52 pb-16 px-4">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <div class="flex justify-between items-start mb-12 md:mb-24">
+      <h1 class="text-3xl md:text-6xl md:w-[58%] leading-tight">Articles, réflexions et partages autour des pratiques artistiques engagées</h1>
+    </div>
+
+    {% set allTags = [] %}
+    {% for post in collections.blog %}
+      {% for tag in post.data.tags %}
+        {% if tag !== "blog" and tag !== "posts" %}
+          {% if tag not in allTags %}
+            {% set allTags = (allTags.push(tag), allTags) %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    <div class="mb-12">
+      <h2 class="text-base md:text-lg mb-4">Filtrer par tag :</h2>
+      <div class="flex flex-wrap gap-2">
+        <button 
+          class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors filter-tag bg-red text-black"
+          data-tag="all">
+          Tous
+        </button>
+        {% for tag in allTags %}
+          <button 
+            class="text-sm md:text-base border border-red px-3 md:px-4 py-1 md:py-2 hover:bg-red hover:text-black transition-colors filter-tag"
+            data-tag="{{ tag }}">
+            {{ tag }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-container">
+      {% for post in collections.blog | reverse %}
+        <div class="post-item border border-red" data-tags="{{ post.data.tags | join(',') }}">
+          <div class="flex justify-between items-start">
+            <div class="flex flex-wrap gap-2 p-4">
+              {% for tag in post.data.tags %}
+                {% if tag !== "blog" and tag !== "posts" %}
+                  <span class="text-sm border border-red px-2 py-1">{{ tag }}</span>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% if post.data.temps %}
+              <div class="text-[14px] p-4 text-right">Temps de lecture: {{ post.data.temps }}</div>
+            {% endif %}
+          </div>
+          <div class="p-8">
+            <h2 class="text-2xl font-serif mb-4">{{ post.data.title }}</h2>
+            {% if post.data.resume_en_deux_lignes %}
+              <p class="text-base mb-8">{{ post.data.resume_en_deux_lignes }}</p>
+            {% endif %}
+            <a href="{{ post.url }}" class="bouton secondary arrow-right">Lire l'article</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const filterTags = document.querySelectorAll('.filter-tag');
+const postsContainer = document.getElementById('posts-container');
+const posts = postsContainer.querySelectorAll('.post-item');
+
+filterTags.forEach(button => {
+  button.addEventListener('click', function() {
+    const selectedTag = this.dataset.tag;
+    
+    filterTags.forEach(btn => btn.classList.remove('bg-red', 'text-black'));
+    this.classList.add('bg-red', 'text-black');
+
+    posts.forEach(post => {
+      if (selectedTag === 'all') {
+        post.style.display = 'block';
+      } else {
+        const postTags = post.dataset.tags.split(',');
+        post.style.display = postTags.includes(selectedTag) ? 'block' : 'none';
+      }
+    });
+  });
+});
+});
+</script>

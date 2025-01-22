@@ -1,0 +1,7 @@
+{
+    "tags": "actions",
+    "locale": "fr-be",
+    "menu-bg": "bg-blue",
+    "permalink": "/actions/{{ page.fileSlug }}/",
+    "layout": "base.njk"
+}

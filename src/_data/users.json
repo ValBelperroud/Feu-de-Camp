@@ -1,0 +1,52 @@
+{
+    "titre": "Qui se trouve derrière le projet ?",
+    "sous-titre": "surtitre",
+    "sur-titre": "surtitre",
+    "inside": [
+      {
+        "titre": "Hugo Berlier",
+        "sur-titre": "iel",
+        "paragraphe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis erat ut lorem sagittis sollicitudin. Phasellus eget dapibus sem, et egestas mi. In ipsum dui, sagittis feugiat lorem in, ultrices varius nulla.",
+        "badge": "fondateurx",
+        "image": {
+          "description": "alt text",
+          "lien": "/assets/images/hugo.png"
+        },
+        "button1": {
+          "text": "text",
+          "lien": ""
+        },
+        "button2": {
+          "text": "text",
+          "lien": ""
+        }
+      },
+      {
+        "titre": "Valmont Belperroud",
+        "sur-titre": "il",
+        "paragraphe": "Curabitur gravida arcu ac tortor dignissim. Phasellus faucibus urna sit amet turpis lacinia, sit amet feugiat enim pretium.",
+        "badge": "fondateurx",
+        "image": {
+          "description": "alt text",
+          "lien": "/assets/images/val.png"
+        },
+        "button1": {
+          "text": "text",
+          "lien": ""
+        },
+        "button2": {
+          "text": "text",
+          "lien": ""
+        }
+      }
+    ],
+    "we_re_hiring": {
+      "titre": "A l’attention des âmes créatives",
+      "paragraphe": "Le Projet Feu de Camp, ça se veut être bien plus que deux personnes. C’est aussi un collectif, un réseau de créatif..ves engagé..es à Bruxelles. <br>Donc, si tu es un..e creatif..ve ou artiste engagé..e comme nous, et que le Projet à éveillé ta curiosité, n’hésite pas à participe au prochain événement pour en apprendre plus. Et oui, c’est vraiment ouvert à tous..te.",
+      "button": {
+        "text": "Découvrir les prochains événements",
+        "lien": "#"
+      }
+    }
+  }
+  

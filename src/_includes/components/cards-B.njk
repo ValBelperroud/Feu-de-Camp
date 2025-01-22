@@ -1,0 +1,158 @@
+<section 
+  x-data="{ 
+    openModal: false,
+    currentItem: null,
+    items: {{ offresPropagandaA | json }},
+    items2: {{ offresPropagandaB | json }}
+  }"
+  class="min-h-min flex flex-col text-black bg-red pt-28">
+  <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+    <h2 class="text-6xl md:w-[58%]">Nos offres les plus courantes</h2>
+  </div>
+
+  <!-- Première section : Collaboration et accompagnement -->
+  <div class="mx-auto w-[87.5vw] max-w-[1680px]">
+    <h3 class="mt-12 text-2xl md:text-3xl mb-6 w-full md:w-56">Collaboration et accompagnement</h3>
+  </div>
+  <div class="w-full bg-red py-4">
+    <div class="w-[87.5vw] max-w-[1680px] mx-auto">
+      <div class="relative w-full">
+        <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory">
+          <template x-for="(item, index) in items" :key="index">
+            <div 
+              @click="openModal = true; currentItem = item"
+              class="snap-start min-w-[26rem] flex flex-col justify-between p-8 bg-black text-white border border-red cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:border-black hover:bg-red hover:text-black">
+              <div>
+                <div class="border-b border-red max-w-fit mb-8">
+                  <p class="font-sans text-base py-4" x-text="item['sur-titre']"></p>
+                </div>
+              </div>
+              <div class="relative">
+                <h4 class="text-2xl md:text-3xl font-serif-semi-b py-4 mb-4 leading-tight" x-text="item.titre"></h4>
+                <button class="absolute bottom-0 right-0 flex items-center justify-center w-8 h-8 border border-red rounded-full hover:bg-red hover:text-black transition-colors">
+                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nouvelle section : Création et lancement de projet -->
+  <div class="mx-auto w-[87.5vw] max-w-[1680px]">
+    <h3 class="mt-12 text-3xl mb-0 w-56">Création et lancement de projet</h3>
+  </div>
+  <div class="py-4 flex max-w-full justify-start flex-wrap gap-4 w-full flex-shrink-0 p-0 mb-12 items-stretch bg-red">
+    <div class="carouselContainer w-full relative">
+      <div class="py-4 pl-custom-pl reel flex overflow-y-hidden overflow-x-auto">
+        <template x-for="(item, index) in items2" :key="index">
+          <div 
+            @click="openModal = true; currentItem = item"
+            class="mr-4 card pt-2 pb-2 cursor-pointer transform transition-all duration-300 hover:scale-[1.02] scale-100 w-[26rem] flex-shrink-0 flex flex-col justify-between border border-solid text-red border-red hover:border-black hover:bg-red hover:text-black pr-4 py-8 px-8 h-full bg-black text-white">
+            <div class="actions-description">
+              <div class="border-b border-red max-w-fit mb-8">
+                <p class="font-sans text-base py-4" x-text="item['sur-titre']"></p>
+              </div>
+            </div>
+            <div class="font-serif-b max-w-[94%] relative">
+              <h4 class="text-3xl font-serif-semi-b py-4 mb-4 leading-tight" x-text="item.titre"></h4>
+              <div class="absolute bottom-0 right-0">
+                <button class="flex items-center justify-center w-8 h-8 border border-red rounded-full hover:bg-red hover:text-black transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-4 h-4 fill-current">
+                    <path d="M17.25,8.51H11.5V2.75A1.5,1.5,0,0,0,10,1.25h0a1.5,1.5,0,0,0-1.5,1.5V8.5H2.75a1.5,1.5,0,0,0,0,3H8.5v5.75a1.5,1.5,0,0,0,1.5,1.5h0a1.5,1.5,0,0,0,1.5-1.5V11.5h5.75a1.5,1.5,0,0,0,0-3Z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div 
+    x-show="openModal"
+    @click="openModal = false"
+    class="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50"
+    style="display: none;">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div 
+        class="bg-black w-full max-w-xl p-8 border border-red text-white relative"
+        @click.stop>
+        <button 
+          @click="openModal = false"
+          class="absolute top-4 right-4 text-red hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <template x-if="currentItem">
+          <div>
+            <h3 x-text="currentItem.titre" class="text-2xl font-bold mb-4"></h3>
+            <!-- Contexte -->
+            <div class="mb-6">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <h4 class="font-bold text-lg">Contexte</h4>
+              </div>
+              <p class="text-base text-white" x-text="currentItem.description"></p>
+            </div>
+            <!-- Concrètement -->
+            <div class="mb-6">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="max-w-5 max-h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                </svg>
+                <h4 x-text="currentItem.popup.concretement.titre" class="font-bold text-lg"></h4>
+              </div>
+              <ul class="list-disc pl-4 space-y-2 text-white">
+                <template x-for="(item, index) in currentItem.popup.concretement.liste" :key="index">
+                  <li x-text="item"></li>
+                </template>
+              </ul>
+            </div>
+            <!-- Prix -->
+            <div class="mb-6">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <h4 x-text="currentItem.popup.prix.titre" class="font-bold text-lg"></h4>
+              </div>
+              <p x-text="currentItem.popup.prix.details" class="mb-2 text-white"></p>
+              <p x-text="currentItem.popup.prix.note" class="text-sm italic text-white"></p>
+            </div>
+            <!-- Exemples -->
+            <div x-show="currentItem.popup.exemples.liste.length > 0">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <h4 x-text="currentItem.popup.exemples.titre" class="font-bold text-lg"></h4>
+              </div>
+              <ul class="list-disc pl-4 space-y-2 text-white">
+                <template x-for="(item, index) in currentItem.popup.exemples.liste" :key="index">
+                  <li x-text="item"></li>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+    
