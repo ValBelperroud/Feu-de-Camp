@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx eleventy",
-    "dev": "tinacms dev -c \"eleventy --serve\"",
-    "start": "eleventy --serve & npx tailwindcss -i src/css/tailwind.css -c src/css/tailwind.config.js -o _site/css/style.css --watch"
+    "build": "tinacms build && npx tailwindcss -i src/css/tailwind.css -c src/css/tailwind.config.js -o _site/css/style.css && npx eleventy",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:eleventy": "tinacms dev -c \"eleventy --serve\"",
+    "dev:tailwind": "npx tailwindcss -i src/css/tailwind.css -c src/css/tailwind.config.js -o _site/css/style.css --watch",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^2.0.1", 
     "@tailwindcss/typography": "^0.5.16",
     "alpinejs": "^3.14.7",
     "autoprefixer": "^10.4.16",

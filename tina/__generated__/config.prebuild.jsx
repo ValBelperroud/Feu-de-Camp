@@ -8,6 +8,14 @@ var config_default = defineConfig({
     outputFolder: "admin",
     publicFolder: "_site"
   },
+  auth: {
+    onLogin: async () => {
+      window.location.href = "/admin";
+    },
+    onLogout: async () => {
+      window.location.href = "/";
+    }
+  },
   media: {
     tina: {
       mediaRoot: "src/assets/images",

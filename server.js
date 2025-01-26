@@ -5,10 +5,13 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Servir les fichiers statiques depuis _site
+// Servir les fichiers statiques
 app.use(express.static('_site'));
 
-// Route pour toutes les requêtes
+// Route spécifique pour l'admin TinaCMS
+app.use('/admin', express.static(path.join(__dirname, '_site/admin')));
+
+// Route pour toutes les autres requêtes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '_site', 'index.html'));
 });
