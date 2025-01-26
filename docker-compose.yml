@@ -5,6 +5,8 @@ services:
     container_name: forgejo
     environment:
       - FORGEJO_APP_INI=/data/gitea/conf/app.ini
+      - ROOT_URL=http://localhost:3000
+      - DISABLE_REGISTRATION=false
     volumes:
       - ./forgejo-data:/data
       - ./app.ini:/data/gitea/conf/app.ini

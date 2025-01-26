@@ -253,6 +253,9 @@ module.exports = function(eleventyConfig) {
   // Copier les fichiers de police
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
 
+  // Ajoutez ceci dans votre fichier .eleventy.js
+  eleventyConfig.addPassthroughCopy("admin");
+
   // Return configuration object
   return {
     dir: {

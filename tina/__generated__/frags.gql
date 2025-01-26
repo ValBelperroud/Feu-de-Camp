@@ -1,0 +1,10 @@
+fragment BlogParts on Blog {
+  __typename
+  title
+  date
+  temps
+  resume_en_deux_lignes
+  image_principale
+  auteur
+  body
+}
